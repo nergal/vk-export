@@ -1,0 +1,18 @@
+image: java:8
+
+variables:
+    GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+before_script:
+    - chmod +x gradlew
+
+build:
+  stage: build
+  script:
+    - ./gradlew -g /cache/.gradle clean assemble
+  allow_failure: false
+
+test:
+  stage: test
+  script:
+    - ./gradlew -g /cache/.gradle check
