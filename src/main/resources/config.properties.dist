@@ -1,0 +1,4 @@
+server.host=http://localhost:35493
+server.port=35493
+client.id=1111
+client.secret=2222

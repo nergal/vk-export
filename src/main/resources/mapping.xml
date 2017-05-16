@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://dozer.sourceforge.net
+        http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <mapping type="one-way">
+        <class-a>com.vk.api.sdk.objects.users.UserXtrCounters</class-a>
+        <class-b>org.nalecz.vksaver.entities.friends.Friend</class-b>
+        <field>
+            <a>city.title</a>
+            <b>city</b>
+        </field>
+        <field>
+            <a>country.title</a>
+            <b>country</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.vk.api.sdk.objects.audio.AudioFull</class-a>
+        <class-b>org.nalecz.vksaver.entities.audio.Audio</class-b>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.vk.api.sdk.objects.video.Video</class-a>
+        <class-b>org.nalecz.vksaver.entities.video.Video</class-b>
+        <field>
+            <a get-method="getPhoto320">photo800</a>
+            <b>preview</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.vk.api.sdk.objects.notes.Note</class-a>
+        <class-b>org.nalecz.vksaver.entities.notes.NoteObject</class-b>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.vk.api.sdk.objects.photos.PhotoAlbumFull</class-a>
+        <class-b>org.nalecz.vksaver.entities.photos.AlbumObject</class-b>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.vk.api.sdk.objects.photos.PhotoFullXtrRealOffset</class-a>
+        <class-b>org.nalecz.vksaver.entities.photos.PhotoObject</class-b>
+    </mapping>
+</mappings>
