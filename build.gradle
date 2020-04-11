@@ -4,7 +4,7 @@ version '1.0.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'application'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.13
 
 mainClassName = "org.nalecz.vksaver.Main"
 
@@ -23,20 +23,34 @@ repositories {
     jcenter()
 }
 
+buildscript {
+    ext {
+        jacksonVersion = '2.10.3'
+        guavaVersion = '28.2-jre'
+        jettyVersion = '9.4.28.v20200408'
+        vkVersion = '1.0.6'
+        log4jVersion = '2.13.1'
+        slf4jVersion = '1.7.30'
+        dozerVersion = '5.5.1'
+        lombokVersion = '1.18.12'
+        junitVersion = '4.13'
+    }
+}
+
 dependencies {
-    compile 'com.fasterxml.jackson.core:jackson-core:2.8.5'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
-    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.5'
-    compile 'com.google.guava:guava:20.0'
-    compile 'org.eclipse.jetty:jetty-server:9.4.0.v20161208'
-    compile 'com.vk.api:sdk:0.3.9'
-    compile 'org.apache.logging.log4j:log4j-core:2.7'
-    compile 'org.slf4j:slf4j-api:1.7.21'
-    compile 'net.sf.dozer:dozer:5.4.0'
+    compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${jacksonVersion}"
+    compile "com.google.guava:guava:${guavaVersion}"
+    compile "org.eclipse.jetty:jetty-server:${jettyVersion}"
+    compile "com.vk.api:sdk:${vkVersion}"
+    compile "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+    compile "net.sf.dozer:dozer:${dozerVersion}"
 
-    compileOnly "org.projectlombok:lombok:1.16.12"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
 
-    testCompile 'junit:junit:4.12'
+    testCompile "junit:junit:${junitVersion}"
 }
 
 jar {

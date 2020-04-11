@@ -6,8 +6,8 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.photos.*;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.dozer.DozerBeanMapper;
 import org.nalecz.vksaver.entities.AbstractEntity;
 
@@ -32,7 +32,7 @@ public class Main extends AbstractEntity {
         if (photoSizes != null) {
             PhotoSizes photoSize = Iterables.getLast(photoSizes, null);
             if (photoSize != null) {
-                value = photoSize.getSrc();
+                value = photoSize.getUrl().toString();
             }
         }
 

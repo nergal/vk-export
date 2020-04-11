@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.objects.messages.Dialog;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import com.vk.api.sdk.objects.messages.ConversationWithMessage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.dozer.DozerBeanMapper;
 import org.nalecz.vksaver.entities.AbstractEntity;
 
@@ -21,13 +21,13 @@ public class Main extends AbstractEntity {
     }
 
     public String proceed() throws ClientException, ApiException {
-        List<Dialog> getUserResponse = apiClient.messages()
-                .getDialogs(actor)
+        List<ConversationWithMessage> getUserResponse = apiClient.messages()
+                .getConversations(actor)
                 .execute()
                 .getItems();
 
         List<DialogObject> dialogObjects = new ArrayList<>();
-        for (Dialog dialog : getUserResponse) {
+        for (ConversationWithMessage dialog : getUserResponse) {
             LOG.warn(dialog);
         }
 

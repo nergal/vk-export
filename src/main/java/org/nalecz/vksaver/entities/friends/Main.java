@@ -8,29 +8,30 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.friends.responses.GetResponse;
+import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
-import com.vk.api.sdk.queries.users.UserField;
 import org.dozer.DozerBeanMapper;
 import org.nalecz.vksaver.entities.AbstractEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main extends AbstractEntity {
     public Main(DozerBeanMapper mapper, VkApiClient apiClient, UserActor actor, Integer userId) {
         super(mapper, apiClient, actor, userId);
     }
 
-    private List<UserField> getFields() {
-        return new ArrayList<UserField>(){{
-            add(UserField.BDATE);
-            add(UserField.CITY);
-            add(UserField.COUNTRY);
-            add(UserField.EXPORTS);
-            add(UserField.PHOTO_MAX_ORIG);
-            add(UserField.SCREEN_NAME);
-            add(UserField.NICKNAME);
-            add(UserField.SITE);
+    private List<Fields> getFields() {
+        return new ArrayList<>() {{
+            add(Fields.BDATE);
+            add(Fields.CITY);
+            add(Fields.COUNTRY);
+            add(Fields.EXPORTS);
+            add(Fields.PHOTO_MAX_ORIG);
+            add(Fields.SCREEN_NAME);
+            add(Fields.NICKNAME);
+            add(Fields.SITE);
         }};
     }
 
@@ -40,8 +41,12 @@ public class Main extends AbstractEntity {
                 .userId(userId)
                 .execute();
 
-        List<UserField> friendFields = getFields();
-        List<String> friendsIds = Lists.transform(friendsResponse.getItems(), Functions.toStringFunction());
+        List<Fields> friendFields = getFields();
+        List<String> friendsIds = friendsResponse
+                .getItems()
+                .stream()
+                .map(Functions.toStringFunction()::apply)
+                .collect(Collectors.toList());
 
         List<UserXtrCounters> getUsersResponse = apiClient.users()
                 .get(actor)

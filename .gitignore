@@ -2,6 +2,7 @@
 /cache/
 /.gradle/
 /build/
+/out/
 *.log
 gradle-app.setting
 !gradle-wrapper.jar

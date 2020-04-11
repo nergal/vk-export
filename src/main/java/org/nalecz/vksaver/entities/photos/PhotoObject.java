@@ -11,4 +11,8 @@ import lombok.Setter;
     private float lng;
     private String text;
     private String src;
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
 }

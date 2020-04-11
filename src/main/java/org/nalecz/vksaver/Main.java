@@ -27,10 +27,10 @@ public class Main {
     }
 
     private static void initServer(Properties properties) throws Exception {
-        Integer port = Integer.valueOf(properties.getProperty("server.port"));
+        int port = Integer.parseInt(properties.getProperty("server.port"));
         String host = properties.getProperty("server.host");
 
-        Integer clientId = Integer.valueOf(properties.getProperty("client.id"));
+        int clientId = Integer.parseInt(properties.getProperty("client.id"));
         String clientSecret = properties.getProperty("client.secret");
 
         HandlerCollection handlers = new HandlerCollection();
